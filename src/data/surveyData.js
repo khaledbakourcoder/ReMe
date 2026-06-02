@@ -3,7 +3,7 @@ export const surveyData = [
         blockId: "block_1",
         title: "Block 1: Nutzung von KI",
         description: null,
-        scoreGroup: null, // Dieser Block dient eher deskriptiven Zwecken
+        scoreGroup: null,
         questions: [
             {
                 id: "q1",
@@ -22,7 +22,6 @@ export const surveyData = [
     {
         blockId: "block_2",
         title: "Block 2: Vertrauen in KI",
-        description: "Bitte bewerten Sie die folgenden Aussagen (1 = Stimme überhaupt nicht zu, 5 = Stimme voll zu).",
         scoreGroup: "trust_score",
         questions: [
             {
@@ -48,7 +47,6 @@ export const surveyData = [
     {
         blockId: "block_3",
         title: "Block 3: Risiken",
-        description: "Bitte bewerten Sie die folgenden Aussagen (1 = Stimme überhaupt nicht zu, 5 = Stimme voll zu).",
         scoreGroup: "risk_score",
         questions: [
             {
@@ -74,7 +72,6 @@ export const surveyData = [
     {
         blockId: "block_4",
         title: "Block 4: Akzeptanz",
-        description: "Bitte bewerten Sie die folgenden Aussagen (1 = Stimme überhaupt nicht zu, 5 = Stimme voll zu).",
         scoreGroup: "acceptance_score",
         questions: [
             {
@@ -106,7 +103,6 @@ export const surveyData = [
     {
         blockId: "block_5",
         title: "Die Goldfrage",
-        description: "Ihre persönliche Einschätzung ist uns wichtig.",
         scoreGroup: "qualitative_analysis",
         questions: [
             {
