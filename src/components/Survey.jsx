@@ -31,12 +31,12 @@ export default function Survey() {
         setAnswers(prev => ({ ...prev, [questionId]: value }));
     };
 
-    const handleNext = () => {
+    const handleNext = (e) => {
         if (currentBlockIndex < totalBlocks - 1) {
             setCurrentBlockIndex(currentBlockIndex + 1);
             window.scrollTo(0, 0);
         } else {
-            handleSubmit();
+            handleSubmit(e);
         }
     };
 
@@ -56,7 +56,9 @@ export default function Survey() {
         });
     };
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+
+        e.target.disabled ="true"
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwtWIMelZPLKKm6_pXItYAnN0T0Jix1PIn8FWo2JTGZeQCIsY3mMbE-2S4HH53NAUX4Vg/exec";
         try {
             await fetch(GOOGLE_SCRIPT_URL, {
@@ -65,8 +67,10 @@ export default function Survey() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(answers),
             });
+
             setIsSubmitted(true);
         } catch (error) {
+            e.target.disabled ="false"
             console.error("Fehler beim Senden an Google Sheets:", error);
             alert("Es gab ein Problem beim Speichern. Bitte versuchen Sie es erneut.");
         }
@@ -114,7 +118,7 @@ export default function Survey() {
 
                 <SurveyFooter
                     onPrevious={handlePrevious}
-                    onNext={handleNext}
+                    onNext={(e)=>handleNext(e)}
                     isFirstBlock={currentBlockIndex === 0}
                     isLastBlock={currentBlockIndex === totalBlocks - 1}
                     isNextDisabled={!isBlockValidationPass()}
